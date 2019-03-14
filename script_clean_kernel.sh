@@ -9,6 +9,10 @@
 #Variáveis de cores
 vermelho="\033[1;31m"
 azul="\033[1;34m"
+amarelo="\033[1;33m"
+verdeclaro="\033[1;32m"
+fundoazul="\033[44;1;37m"
+fundovermelho="\033[41;1;37m"
 NORMAL="\033[m"
 
 menu()
