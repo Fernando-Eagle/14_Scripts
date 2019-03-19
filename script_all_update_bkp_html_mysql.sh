@@ -17,9 +17,9 @@ NORMAL="\033[m"
 
 #Faz a atualização do sistema, baseado em debian
 clear
-echo -e "${verdeclaro}Este Script irá guiá-lo para atualizar seu Sistema Operacional${NORMAL}"
-echo -e "${verdeclaro}Também irá guiá-lo para fazer backup das paginas do servidor Apache${NORMAL}"
-echo -e "${verdeclaro}Bem como do SGBD MySQL ou MariaDB instalado${NORMAL}"
+echo -e "${amarelo}Este Script irá guiá-lo para atualizar seu Sistema Operacional${NORMAL}"
+echo -e "${amarelo}Também irá guiá-lo para fazer backup das paginas do servidor Apache${NORMAL}"
+echo -e "${amarelo}Bem como do SGBD MySQL ou MariaDB instalado${NORMAL}"
 echo -e "${fundovermelho}Iniciando a atualização do sistema:${NORMAL}"
 sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
 whoami
@@ -28,14 +28,14 @@ echo -e "${fundoazul}Fim da atualização${NORMAL}"
 echo -e "${amarelo}Testando se a pasta de backup foi criada${NORMAL}"
 sleep 3
 #Testa se a pasta para o backup já existe senão, cria a mesma
-if [ -e "/home/fernando/Downloads/Backup" ]
+if [ -e "/home/$USER/Downloads/Backup" ]
 then
 echo -e "${amarelo}o diretorio existe e vamos compactar o portal lá${NORMAL}"
 sleep 3
 else
 echo -e "${fundovermelho}o diretorio não existe e vamos criá-lo${NORMAL}"
 sleep 3
-mkdir /home/fernando/Downloads/Backup
+mkdir /home/$USER/Downloads/Backup
 echo -e "${fundoazul}Pasta criada e pronta para receber o backup${NORMAL}"
 sleep 3
 fi
@@ -43,16 +43,16 @@ fi
 #Faz o backup do portal do servidor apache, estrutura debian
 ##### Variaveis
 declare DATA=`date +%Y%m%d_%H%M%S`
-declare DIR_BACKUP="/home/fernando/Downloads/Backup/"  #  Define o diretório de backup
+declare DIR_BACKUP="/home/$USER/Downloads/Backup/"  #  Define o diretório de backup
 clear
 echo -e "${fundovermelho}Iniciando o backup do portal do servidor Apache em: /var/www/html${NORMAL}"
 sleep 3
 #Se quiser apenas copiar o conteudo
 sudo cp -R  /var/www/html/ $DIR_BACKUP/html_$DATA
 #Se quiser gravar a estrutura de pastas e conteudo compactado
-sudo tar cvzf /home/fernando/Downloads/Backup/bkp_html_$DATA.tar.gz /var/www/html/
+sudo tar cvzf /home/$USER/Downloads/Backup/bkp_html_$DATA.tar.gz /var/www/html/
 clear
-echo -e "${amarelo}O backup foi salvo na pasta '/home/fernando/Downloads/Backup'sob o nome ${fundopurple}'bkp_html_$DATA.tar.gz'${NORMAL}"
+echo -e "${amarelo}O backup foi salvo na pasta '/home/$USER/Downloads/Backup'sob o nome ${fundopurple}'bkp_html_$DATA.tar.gz'${NORMAL}"
 sleep 3
 
 #Faz o backup do SGBD MySQL ou MariaDB que suporta o portal
@@ -61,7 +61,7 @@ echo -e "${fundovermelho}Iniciando o backup do SGBD MySQL ou MariaDB via mysqldu
 sleep 3
 ##### Variaveis
 declare DATA=`date +%Y%m%d_%H%M%S`
-declare DIR_BACKUP="/home/fernando/Downloads/Backup/"  #  Define o diretório de backup
+declare DIR_BACKUP="/home/$USER/Downloads/Backup/"  #  Define o diretório de backup
 declare SENHA="November777"
 declare USER="root"
 DIR_DEST_BACKUP=$DIR_BACKUP$DATA
@@ -117,7 +117,7 @@ executa_backup 2>> $DIR_BACKUP/$DATA/backup.log 1>> $DIR_BACKUP/$DATA/backup.log
 
 ###################################################################
 clear
-echo -e "${fundovermelho}Backup finalizado e salvo em ${fundoazul}'/home/fernando/Downloads/Backup/$DATA'${NORMAL}"
+echo -e "${fundovermelho}Backup finalizado e salvo em ${fundoazul}'/home/$USER/Downloads/Backup/$DATA'${NORMAL}"
 echo -e "${amarelo} Info hora atual e tempo de ligado:${NORMAL}"
 uptime
 echo -e "${amarelo} O script está rodando no diretório:${NORMAL}"  && pwd
