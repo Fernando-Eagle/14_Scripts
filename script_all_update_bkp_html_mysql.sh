@@ -48,7 +48,7 @@ clear
 echo -e "${fundovermelho}Iniciando o backup do portal do servidor Apache em: /var/www/html${NORMAL}"
 sleep 3
 #Se quiser apenas copiar o conteudo
-sudo cp -R  /var/www/html/ $DIR_BACKUP/html_$DATA
+#sudo cp -R  /var/www/html/ $DIR_BACKUP/html_$DATA
 #Se quiser gravar a estrutura de pastas e conteudo compactado
 sudo tar cvzf /home/$USER/Downloads/Backup/bkp_html_$DATA.tar.gz /var/www/html/
 clear
