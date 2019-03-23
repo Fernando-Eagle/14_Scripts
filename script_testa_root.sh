@@ -8,8 +8,6 @@ then
     echo "Você é o ricardo"
 #    comandos_para_ricardo
 else
-    echo "Você não é o root e nem o ricardo"
+    echo "Você não é o root, nem o ricardo é $USER"
 #    comandos_para_demais
 fi
-
-mkdir /home/$USER/Downloads/Teste

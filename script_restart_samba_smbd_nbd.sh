@@ -3,7 +3,8 @@
 #Fernando "Eagle" De Sousa
 #fernandodesousa.wordpress.com
 #22/03/2019
-#https://https://github.com/Fernando-Eagle/shell_scripts
+#Base de conhecimento: http://www.devin.com.br/shell_script/
+#Repo: https://github.com/Fernando-Eagle/shell_scripts
 
 #Variáveis de cores
 vermelho="\033[1;31m"
@@ -15,15 +16,47 @@ fundovermelho="\033[41;1;37m"
 fundopurple="\033[45;1;37m"
 NORMAL="\033[m"
 
-# Limpa a tela e verifica se os serviços estão ativos
-clear
-echo -e "${amarelo}Este Script irá reinicializar todos os serviços do SAMBA${NORMAL}"
-echo -e "${azul}Verificando se os serviços estão ativos${NORMAL}"
-sudo systemctl status nmbd.service && sudo systemctl status smbd.service
-sleep 3
+Principal() {
+  clear
+  echo -e "${amarelo}Este Script irá reinicializar todos os serviços do SAMBA${NORMAL}"
+  echo -e "${amarelo}--------------------------------------------------------${NORMAL}"
+  echo -e "${fundoazul}Opções:${NORMAL}"
+  echo
+  echo "1. Verificar o status dos serviços"
+  echo "2. Reinicializar os serviços"
+  echo "3. Sair"
+  echo
+  echo -n -e "${fundoazul}Qual a opção desejada? ${NORMAL}"
+  read opcao
+  case $opcao in
+    1) Verificar ;;
+    2) Reinicializar ;;
+    3) clear; exit ;;
+    *) echo -e "${fundovermelho}Opção desconhecida.${NORMAL}"; sleep 2 ; Principal ;;
+  esac
+}
 
-echo -e "${fundovermelho}Backup finalizado e salvo em ${fundoazul}'/home/$USER/Downloads/Backup/$DATA'${NORMAL}"
-echo -e "${amarelo} Info hora atual e tempo de ligado:${NORMAL}"
-uptime
-echo -e "${amarelo} O script está rodando no diretório:${NORMAL}"  && pwd
-echo -e "${fundopurple}Fim do backup${NORMAL}"
+Verificar() {
+  clear
+    echo -e "${fundopurple}Verificando os serviços do SAMBA agora...${NORMAL}"
+    sudo systemctl status nmbd.service && sudo systemctl status smbd.service
+    echo -n -e "${amarelo}Deseja retornar ao Menu Principal (S/n)${NORMAL}"
+    read voltar
+    if [ $voltar = "S" ]; then
+      Principal
+    elif [ $voltar = "n" ]; then
+      clear; exit
+    fi
+
+}
+
+Reinicializar() {
+  clear
+  sudo systemctl restart nmbd.service && sudo systemctl restart smbd.service
+  echo -e "${amarelo}Reinicializando os serviços do SAMBA agora...${NORMAL}"
+  sleep 3
+  clear
+  Principal
+}
+
+Principal
