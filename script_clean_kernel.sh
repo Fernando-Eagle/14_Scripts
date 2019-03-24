@@ -27,7 +27,8 @@ echo
 echo
 sleep 4
 echo -e "${vermelho}Se tiver driver proprietário NVIDIA ou AMD, aconselho desabilitar antes de excluir os kernels antigos.\nLogo em seguida ative-os no kernel atual.Caso contrário pode resultar perda do driver de vídeo após o reboot do sistema, já que os drivers não foram compilados no kernel atual."
-echo -e "${azul}Deseja exluir os kernels antigos, menos o atual? \nKernel atual: `uname -r` \ns/n${NORMAL}"
+echo -e "${azul}Deseja exluir os kernels antigos, menos o atual? \nKernel atual: ${fundovermelho}`uname -r`${NORMAL}
+ 			\ns/n${NORMAL}"
 sleep 1
 read -n1 -s escolha
 
