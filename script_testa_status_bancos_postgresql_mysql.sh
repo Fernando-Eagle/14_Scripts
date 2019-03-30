@@ -25,7 +25,7 @@ clear
 echo -e "${amarelo} Vamos testar se o banco de dados MySQL/MariaDB está ativo${NORMAL}"
 echo -e "${verdeclaro} ------------------------------------------------------${NORMAL}"
 sleep 3
-sudo systemctl status mysqld.service && sudo systemctl status mysql.service
+sudo systemctl status mysql.service #&& sudo systemctl status mysqld.service
 
 echo -e "${amarelo} Fim do script${NORMAL}"
 echo -e "${verdeclaro} -------------${NORMAL}"

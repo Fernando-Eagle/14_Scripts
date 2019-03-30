@@ -15,6 +15,7 @@ fundovermelho="\033[41;1;37m"
 fundopurple="\033[45;1;37m"
 NORMAL="\033[m"
 
+#Função Principal
 Principal() {
   clear
   echo "Bem vindo ao meu Script"
@@ -34,7 +35,7 @@ Principal() {
   esac
 }
 
-# Demais funções
+#Demais funções
 ListaPortas() {
   clear
     echo -e "${amarelo}Listando as portas agora...${NORMAL}"
