@@ -24,17 +24,24 @@ whoami
 echo -e "${fundoazul}A atualização foi efetuada com sucesso!${NORMAL}"
 sleep 3
 clear
+echo -e "${fundopurple}INICIANDO VERIFICAÇÃO / ACRÉSCIMO SWAP{NORMAL}"
 echo -e "${fundoazul}Passo 1 - Verificando o Sistema em Relação às Informações de Swap (troca)${NORMAL}"
 sudo swapon --show
 sleep 3
-echo -e "${fundoazul}Passo 1a - Se você não receber nenhum resultado, isso significa que seu sistema não tem espaço
-de swap disponível atualmente.
-Você pode verificar se não existe um swap ativo usando o utilitário free :${NORMAL}"
+echo -e "${fundoazul}Passo 1a - Verificando se não existe um swap ativo usando o utilitário free :${NORMAL}"
 free -h
 sleep 3
 echo -e "${fundovermelho}Passo 2 - Verificando o Espaço Disponível na Partição do Disco Rígido${NORMAL}"
 df -h
 sleep 3
+echo -e "${fundoazul}Passo 3 - Criando um Arquivo de Swap${NORMAL}"
+echo -e "${verdeclaro}Vamos criar um SWAP de 2Gb${NORMAL}"
+sudo swapoff -a
+sudo fallocate -l 2G /swapfile
+sudo swapon -a
+sleep 3
+
+
 
 echo -e "${amarelo}Testando se a pasta de backup foi criada${NORMAL}"
 sleep 3
