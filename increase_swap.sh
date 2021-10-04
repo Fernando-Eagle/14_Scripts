@@ -19,32 +19,66 @@ NORMAL="\033[m"
 clear
 echo -e "${amarelo}Este Script irá guiá-lo para aumentar a área de memória SWAP do seu Sistema Operacional${NORMAL}"
 echo -e "${fundovermelho}Iniciando a atualização do sistema:${NORMAL}"
-sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
-whoami
+  sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
+  whoami
 echo -e "${fundoazul}A atualização foi efetuada com sucesso!${NORMAL}"
-sleep 3
-clear
+  sleep 3
+  clear
 echo -e "${fundopurple}INICIANDO VERIFICAÇÃO / ACRÉSCIMO SWAP{NORMAL}"
 echo -e "${fundoazul}Passo 1 - Verificando o Sistema em Relação às Informações de Swap (troca)${NORMAL}"
-sudo swapon --show
-sleep 3
-echo -e "${fundoazul}Passo 1a - Verificando se não existe um swap ativo usando o utilitário free :${NORMAL}"
-free -h
-sleep 3
+  sudo swapon --show
+  sleep 3
+echo -e "${fundoazul}Verificando se não existe um swap ativo usando o utilitário free :${NORMAL}"
+  free -h
+  sleep 3
 echo -e "${fundovermelho}Passo 2 - Verificando o Espaço Disponível na Partição do Disco Rígido${NORMAL}"
-df -h
-sleep 3
+  df -h
+  sleep 3
 echo -e "${fundoazul}Passo 3 - Criando um Arquivo de Swap${NORMAL}"
-echo -e "${verdeclaro}Vamos criar um SWAP de 2Gb${NORMAL}"
-sudo swapoff -a
-sudo fallocate -l 2G /swapfile
-sudo swapon -a
-sleep 3
+echo -e "${fundopurple}Vamos criar um SWAP de 2Gb${NORMAL}"
+echo -e "${fundoazul}Desativando o swap${NORMAL}"
+  sudo swapoff -a
+  sudo fallocate -l 2G /swapfile
+
+echo -e "${fundoazul}Verificando se a quantidade correta de espaço foi reservada${NORMAL}"
+  ls -lh /swapfile
+  sleep 3
+
+echo -e "${fundoazul}Passo 4 - Habilitando o Arquivo de Swap${NORMAL}"
+echo -e "${fundovermelho}Tornando o arquivo acessível somente para root${NORMAL}"
+  sudo chmod 600 /swapfile
+echo -e "${fundovermelho}Verificando a alteração de permissões${NORMAL}"
+  ls -lh /swapfile
+echo -e "${fundoazul}Marcando o arquivo como espaço de swap${NORMAL}"
+  sudo mkswap /swapfile
+echo -e "${fundoazul}Reativando o swap${NORMAL}"
+  sudo swapon /swapfile
+echo -e "${fundoazul}Verificando se o swap está disponível${NORMAL}"
+  sudo swapon --show
+echo -e "${fundovermelho}Verificando novamente o swap ativo usando o utilitário free:${NORMAL}"
+  free -h
+  sleep 3
+
+echo -e "${fundoazul}Passo 5 - Tornando o Arquivo de Swap Permanente${NORMAL}"
+echo -e "${fundovermelho}Fazendo um backup do arquivo /etc/fstab para o caso de algo dar errado:${NORMAL}"
+#Faz o backup do portal do arquivo fstab, estrutura debian
+##### Variaveis
+  declare DATA=`date +%Y%m%d_%H%M%S`
+
+  #sudo cp /etc/fstab /etc/fstab_$DATA.bak
+
+  sudo cp /etc/fstab /etc/fstab.bak
+
+echo -e "${fundovermelho}Adicionando a informação do arquivo de swap no final do seu arquivo /etc/fstab:${NORMAL}"
+
+  echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 
+
+#----------------------------
 
 echo -e "${amarelo}Testando se a pasta de backup foi criada${NORMAL}"
-sleep 3
+  sleep 3
 #Testa se a pasta para o backup já existe senão, cria a mesma
 if [ -e "/home/$USER/Downloads/Backup" ]
 then
@@ -140,4 +174,3 @@ echo -e "${amarelo} Info hora atual e tempo de ligado:${NORMAL}"
 uptime
 echo -e "${amarelo} O script está rodando no diretório:${NORMAL}"  && pwd
 echo -e "${fundopurple}Fim do backup${NORMAL}"
-
