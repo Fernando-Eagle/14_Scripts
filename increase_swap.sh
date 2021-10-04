@@ -13,17 +13,18 @@ verdeclaro="\033[1;32m"
 fundoazul="\033[44;1;37m"
 fundovermelho="\033[41;1;37m"
 fundopurple="\033[45;1;37m"
+fundocinza="\033[47;1;37m"
 NORMAL="\033[m"
 
 #Descreve o que faz o script na tela do operador
 clear
 echo -e "${amarelo}Este Script irá guiá-lo para aumentar a área de memória SWAP do seu Sistema Operacional${NORMAL}"
-echo -e "${fundovermelho}Iniciando a atualização do sistema:${NORMAL}"
-  sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
-  whoami
-echo -e "${fundoazul}A atualização foi efetuada com sucesso!${NORMAL}"
-  sleep 3
-  clear
+#echo -e "${fundovermelho}Iniciando a atualização do sistema:${NORMAL}"
+#  sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
+#  whoami
+#echo -e "${fundoazul}A atualização foi efetuada com sucesso!${NORMAL}"
+#  sleep 3
+#  clear
 echo -e "${fundopurple}INICIANDO VERIFICAÇÃO / ACRÉSCIMO SWAP{NORMAL}"
 echo -e "${fundoazul}Passo 1 - Verificando o Sistema em Relação às Informações de Swap (troca)${NORMAL}"
   sudo swapon --show
