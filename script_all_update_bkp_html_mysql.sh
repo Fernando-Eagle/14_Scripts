@@ -21,7 +21,9 @@ echo -e "${amarelo}Este Script irá guiá-lo para atualizar seu Sistema Operacio
 echo -e "${amarelo}Também irá guiá-lo para fazer backup das paginas do servidor Apache${NORMAL}"
 echo -e "${amarelo}Bem como do SGBD MySQL ou MariaDB instalado${NORMAL}"
 echo -e "${fundovermelho}Iniciando a atualização do sistema:${NORMAL}"
-sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
+
+sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove && sudo snap refresh --list && sudo snap refresh
+
 whoami
 echo -e "${fundoazul}A atualização foi efetuada com sucesso!${NORMAL}"
 echo -e "${fundoazul}Fim da atualização${NORMAL}"
@@ -122,3 +124,58 @@ echo -e "${amarelo} Info hora atual e tempo de ligado:${NORMAL}"
 uptime
 echo -e "${amarelo} O script está rodando no diretório:${NORMAL}"  && pwd
 echo -e "${fundopurple}Fim do backup${NORMAL}"
+sleep 4
+
+#Função pergunta se quer desligar, rebootar ou sair
+Finalizar() {
+  clear
+  echo -e "${fundoazul}Chegamos ao final do script ${NORMAL}"
+  echo -e "${amarelo}Escolha uma das opções abaixo ${NORMAL}"
+  echo
+  echo "[1] Reboot"
+  echo "[2] Shutdown"
+  echo "[3] Voltar para linha de comando"
+  echo "[4] Fechar terminal"
+  echo
+  echo -n -e "${fundoazul}Digite a opção: ${NORMAL}"
+  read opcao
+  case $opcao in
+    1) Reboot ;;
+    2) Shutdown ;;
+    3) Return ;;
+    4) Exit;;
+    *) echo -e "${fundovermelho}Opção desconhecida.${NORMAL}"; sleep 2 ; Finalizar ;;
+  esac
+}
+
+#Demais funções
+Reboot() {
+  clear
+    echo -e "${amarelo}reiniciando agora...${NORMAL}"
+    sudo reboot
+
+}
+
+Shutdown() {
+  clear
+  echo -e "${vermelho}desligando...${NORMAL}"
+  sudo shutdown -h now
+#  systemctl poweroff -i - ainda não resolvemos qual dos dois fica
+
+}
+
+Return() {
+  clear
+  echo -e "${verdeclaro}voltando para o terminal...${NORMAL}"
+  clear && exit
+
+}
+Exit() {
+  clear
+  echo -e "${verdeclaro}fechando o terminal...${NORMAL}"
+  proc=$(ps -e | grep bash$ | cut -f1 -d '')
+  kill -9 $proc
+
+}
+
+Finalizar

@@ -31,7 +31,7 @@ read porta
 
 echo -e "${fundopurple}Abrindo tunelamento e efetuando atualização${NORMAL}"
 sleep 3
-sudo export http_proxy="http://$usuario:$senha@$proxy:$porta"
+sudo export http_proxy="http://$usuario:$senha@$proxy.$dominio:$porta"
 sudo apt update && sudo apt list --upgradable && sudo apt upgrade && sudo apt autoclean && sudo apt autoremove
 whoami
 echo "A atualização foi efetuada com sucesso!"

@@ -1,0 +1,11 @@
+#!/bin/sh
+clear
+echo "Script do MySQLDump"
+mysqldump -u root -p gestor > /home/fernando/13_MariaDB/gestor.sql
+clear
+whoami
+echo "O backup do banco gestor foi salvo na pasta /home/fernando/13_MariaDB/ sob o nome 'gestor.sql'"
+echo "Info hora atual e tempo de ligado:"
+uptime
+echo "O script está rodando no diretório:"  && pwd
+echo "Fim do backup"
