@@ -19,7 +19,8 @@ Main() {
   echo "1. Atualizar pacotes Apt"
   echo "2. Atualizar pacotes Snap"
   echo "3. Limpar memória Swap"
-  echo "4. Sair"
+  echo "4. Reinicializar"
+  echo "5. Sair"
   echo
   echo -n -e "${fundoazul}Qual a opção desejada? ${NORMAL}"
   read opcao
@@ -27,7 +28,8 @@ Main() {
     1) Atualiza_apt ;;
     2) Atualiza_snap ;;
     3) Limpa_swap ;;
-    4) clear; exit ;;
+    4) Reiniciar_sistema ;;
+    5) clear; exit ;;
     *) echo -e "${fundovermelho}Opção desconhecida.${NORMAL}"; sleep 2 ; Main ;;
   esac
 }
@@ -71,6 +73,17 @@ if [ $voltar = "S" ]; then
   Main
 elif [ $voltar = "n" ]; then
   clear; exit
+fi
+}
+
+Reiniciar_sistema() {
+clear
+  echo -e "${fundovermelho}Tem certeza que quer reinicializar? (S/n)${NORMAL}"; sleep 2
+read certeza
+if [ $certeza = "n" ]; then
+  Main
+elif [ $certeza = "S" ]; then
+  sudo reboot
 fi
 }
 
