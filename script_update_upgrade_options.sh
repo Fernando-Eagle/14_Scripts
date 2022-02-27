@@ -78,7 +78,8 @@ fi
 
 Reiniciar_sistema() {
 clear
-  echo -e "${fundovermelho}Tem certeza que quer reinicializar? (S/n)${NORMAL}"; sleep 2
+  echo -e "${fundovermelho}!!! CUIDADO, ESSA OPERAÇÃO REINICIARÁ TODO O SISTEMA !!!${NORMAL}"; sleep 2
+  echo -n -e "${fundovermelho}Tem certeza que quer reinicializar? (S/n)${NORMAL}"
 read certeza
 if [ $certeza = "n" ]; then
   Main
