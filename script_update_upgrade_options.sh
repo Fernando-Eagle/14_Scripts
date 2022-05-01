@@ -16,11 +16,11 @@ Main() {
   echo -e "${fundoazul}------------------------------------------------------------------------------------ ${NORMAL}"
   echo -e "${fundoazul}Opções:${NORMAL}"
   echo
-  echo "1. Atualizar pacotes Apt"
-  echo "2. Atualizar pacotes Snap"
-  echo "3. Limpar memória Swap"
-  echo "4. Reinicializar"
-  echo "5. Sair"
+  echo "[1] Atualizar pacotes Apt"
+  echo "[2] Atualizar pacotes Snap"
+  echo "[3] Limpar memória Swap"
+  echo "[4] Reinicializar"
+  echo "[5] Sair"
   echo
   echo -n -e "${fundoazul}Qual a opção desejada? ${NORMAL}"
   read opcao
