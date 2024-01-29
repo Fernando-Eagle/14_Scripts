@@ -1,0 +1,46 @@
+   60  sudo apt-cache search pandas
+   61  sudo apt install pandas
+   62  sudo apt-cache search pandas
+   63  sudo apt-cache search pandas | more
+   64  sudo apt install python3-pandas
+   65  ~/Downloads/Shell/script_update_upgrade.sh 
+   66  sudo apt-cache search vscode
+   67  ~/Downloads/Shell/script_update_upgrade.sh 
+   68  exit
+   69  python
+   70  python3
+   71  clear
+   72  ls
+   73  sudo apt-cache search atom
+   74  sudo apt-cache search atom | more
+   75  sudo add-apt-repository ppa:webupd8team/atom
+   76  ~/Downloads/Shell/script_update_upgrade.sh 
+   77  sudo apt install atom
+   78  sudo add-apt-repository ppa:webupd8team/atom
+   79  sudo apt-cache search atom | more
+   80  sudo add-apt-repository ppa:webupd8team/atom
+   81  sudo apt-get update
+   82  sudo add-apt-repository ppa:webupd8team/atom --remove
+   83  ~/Downloads/Shell/script_update_upgrade.sh 
+   84  sudo apt-cache search visual studio
+   85  sudo apt-cache search visual code
+   86  sudo apt-cache search visual code | more
+   87  sudo apt-cache search jupiter
+   88  sudo apt-cache search visual code | more
+   89  sudo apt-cache search jupyter
+   90  sudo apt-cache search visual code | more
+   91  sudo apt-cache search jupyter-notebook
+   92  sudo apt install jupyter-notebook
+   93  ~/Downloads/Shell/script_update_upgrade.sh 
+   94  cd ~/
+   95  Downloads/
+   96  ls
+   97  cd Downloads/
+   98  ls
+   99  sudp dpkg -i code_1.85.1-1702462158_amd64.deb 
+  100  sudo dpkg -i code_1.85.1-1702462158_amd64.deb 
+  101  ~/Downloads/Shell/script_update_upgrade.sh 
+  102  sudo reboot
+  103  ~/Downloads/Shell/script_update_upgrade.sh 
+  104  history
+  105  history > history.txt
