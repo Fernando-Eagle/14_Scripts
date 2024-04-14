@@ -1,17 +1,17 @@
 #!/bin/bash
-#Service: Update apt packs, flatpak's and snap's
-#Author: Fernando "Eagle" De Sousa
-#Site: fernandodesousa.wordpress.com
-#Lauchment: 16/07/2022
-#Update: 27/08/2023
-#File site: https://https://github.com/Fernando-Eagle/shell_scripts
+#Atualiza pacotes apt, flatpack e snap
+#Fernando "Eagle" De Sousa
+#fernandodesousa.wordpress.com
+#Lançamento: 16/07/2022
+#Atualização: 27/08/2023
+#https://https://github.com/Fernando-Eagle/shell_scripts
 
-#System variables
+#Variáveis de Sistema
 nome_sistema="Script de Atualização De Sistema Linux Debian based"
 autor_sistema="Autor: Fernando'Eagle' De Sousa"
 versao_sistema="Versao 1.0"
 
-#Colors variables
+#Variáveis de cores
 vermelho="\033[1;31m"
 azul="\033[1;34m"
 amarelo="\033[1;33m"
@@ -22,11 +22,11 @@ fundopurple="\033[45;1;37m"
 NORMAL="\033[m"
 
 clear
-# Showing values ​​of system variables
+# Exibindo o valor das variaveis de sistema
 echo -e ${fundoazul}$nome_sistema ${NORMAL}
 echo -e ${fundoazul}$autor_sistema ${NORMAL}
 echo -e ${fundoazul}$versao_sistema ${NORMAL}
-# End display of system variables
+# Fim da exibição das variaveis de sistema
 
   echo -e "${fundoazul}Este script irá efetuar a atualização dos pacotes Apt, Snap, Flatpak e limpará a memória Swap ${NORMAL}"
   echo -e "${fundoazul}--------------------------------------------------------------------------------------------- ${NORMAL}"

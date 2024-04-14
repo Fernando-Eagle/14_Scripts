@@ -1,5 +1,5 @@
 #!/bin/bash
-#coleta de dados através de variáveis
+#atualiza o sistema, através do proxy
 #Fernando "Eagle" De Sousa
 #fernandodesousa.wordpress.com
 #27/03/2019
